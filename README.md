@@ -18,7 +18,7 @@ Check requirements.txt for packages to install
 First clone the repository from Github and switch to the project directory
 ```
 
-* git clone git@github.com/USERNAME/{{ project_name }}.git
+* git clone `https://github.com/Victorspy-web/weather_app`
 * cd {{ project_name }}
 
 
