@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        body {
+            background: lightblue;
+            font-family: sans-serif;
+            font-size: 1.1em;
+        }
+
+        .title {
+            text-align: center;
+            }
+
+        .input {
+        width: 400px;
+        height: 35px;
+        font-size: 1.1em
+        }
+
+        .sub {
+        height : 38px;
+        }
+
+        .delete-link {
+            text-decoration: none;
+        }
+
+        .delete-link:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+
+<h1 class="title">Vic's Weather App</h1>
+
+<h3>You have <i>{{ count }}</i> weather forecast{{ count|pluralize:"s" }} displayed</h3>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    {{ form.name }}
+    <input class="sub" type="submit" value="Check City">
+</form>
+
+<br><br>
+
+
+{% for city_weather in weather_data %}
+
+<div>
+<img src="https://openweathermap.org/img/w/{{ city_weather.icon }}.png" alt="Image">
+</div><br>
+
+<div>
+    Country : {{ city_weather.country }}
+    </div><br>
+
+<div>
+    City : {{ city_weather.city|title }}
+</div><br>
+
+<div>
+    Description : {{ city_weather.description }}
+</div><br>
+
+<div>
+    Temperature : {{ city_weather.temperature }}˚F
+</div>
+<br>
+
+
+<hr>
+{% endfor %}
+
+</body>
+</html>
